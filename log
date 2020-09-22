@@ -10,3 +10,9 @@ Tue Sep 22 16:17:59 UTC 2020:
  tests:  0|6
 total_score: 0/70
 a9bb6b5
+Tue Sep 22 16:18:12 UTC 2020: 
+ hashmap.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+ tests:  0|6
+total_score: 0/70
+389741e
