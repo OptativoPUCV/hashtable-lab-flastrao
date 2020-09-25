@@ -105,8 +105,6 @@ void * searchMap(HashMap * map,  char * key) {
       map->current = posicion; //Actualiza current si lo encuentra
     }
 
-    map->current = posicion; //Actualiza current si no lo encuentra
-
     return NULL;
 }
 
