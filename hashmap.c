@@ -99,15 +99,14 @@ void * searchMap(HashMap * map,  char * key) {
 }
 
 void * firstMap(HashMap * map) {
-    long posicion = 0;
+    long posicion = 0; //Se inicializa en 0 para recorrer el arreglo
     while((map->buckets[posicion] == NULL) || (map->buckets[posicion]->key == NULL)){
-      posicion++;
+      posicion++; //Si es que no existe un value se sigue iterando
     }
-    map->current = posicion;
-    return map->buckets[posicion]->value;
+    map->current = posicion; //Actualiza current
+    return map->buckets[posicion]->value; //Retorna primer valor que encuentra
 }
 
 void * nextMap(HashMap * map) {
-
-    return NULL;
+    return map->buckets[map->current+1];
 }
