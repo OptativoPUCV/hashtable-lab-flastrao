@@ -87,13 +87,13 @@ void eraseMap(HashMap * map,  char * key) {
 void * searchMap(HashMap * map,  char * key) {   
     long posicion = hash(key, map->capacity);//Se obtiene la posicion (a)
 
-    while(map->buckets[posicion]->key != key){
+    while(is_equal(map->buckets[posicion]->key, key)){
       posicion++; //Avanza si no encuentra la clave(b)
       if(map->buckets[posicion] == NULL){
         return NULL; //LLega a casilla nula, retorna NULL
       }
       if(map->buckets[posicion]->key == key){
-        return map->buckets[posicion]->value;
+        return map->buckets[posicion]->value; //Retorna valor de la clave
       }
     }
     map->current = posicion; //Actualiza current
