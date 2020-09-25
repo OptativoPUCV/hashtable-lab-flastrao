@@ -46,12 +46,14 @@ int is_equal(void* key1, void* key2){
 
 void insertMap(HashMap * map, char * key, void * value) {
     long posicion = hash(key, map->capacity);//Se obtiene la posicion (a)
+
     while(map->buckets[posicion] != NULL){
       posicion ++; //Resolucion colisiones (b)
       if(posicion == map->capacity){
-      posicion = 0;
+      posicion = 0; //Caso de que llegue al final del arreglo
       }
     }
+  
     //int capacidadmax = (0.7 * map->capacity);
     map->buckets[posicion] = createPair(key, value); //Ingresa el par en la casilla (c)
 
