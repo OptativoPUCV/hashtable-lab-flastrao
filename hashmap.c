@@ -45,11 +45,13 @@ int is_equal(void* key1, void* key2){
 
 
 void insertMap(HashMap * map, char * key, void * value) {
-    long posicion = hash(key, map->capacity);//Se obtiene la posicion
+    long posicion = hash(key, map->capacity);//Se obtiene la posicion (a)
     
     while(map->buckets[posicion] != NULL && is_equal(map->buckets[posicion]->key, key) == 1){
-      posicion ++;
+      posicion ++; //Resolucion colisiones (b)
     }
+    map->buckets[posicion] = createPair(key, value); //Ingresa el par en la casilla (c)
+
 
     map->size++; //Aumenta size ya que se agrega un elemento
 }
