@@ -108,5 +108,5 @@ void * firstMap(HashMap * map) {
 }
 
 void * nextMap(HashMap * map) {
-    return map->buckets[map->current+1];
+    return map->buckets[map->current+1]->value;
 }
