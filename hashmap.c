@@ -101,7 +101,7 @@ void * searchMap(HashMap * map,  char * key) {
 void * firstMap(HashMap * map) {
     long posicion = 0;
     if(map->buckets[posicion]->value == NULL){
-      return NULL;
+      posicion++;
     }
     if(map->buckets[posicion]->value != NULL){
       void * firstValue = map->buckets[posicion]->value;
