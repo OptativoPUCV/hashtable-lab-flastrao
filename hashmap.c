@@ -50,6 +50,10 @@ void insertMap(HashMap * map, char * key, void * value) {
     while(map->buckets[posicion] != NULL){
       posicion ++; //Resolucion colisiones (b)
     }
+
+    //int capacidadmax = (0.7 * map->capacity);
+
+
     
     map->buckets[posicion] = createPair(key, value); //Ingresa el par en la casilla (c)
 
@@ -80,7 +84,13 @@ void eraseMap(HashMap * map,  char * key) {
 }
 
 void * searchMap(HashMap * map,  char * key) {   
+    long posicion = hash(key, map->capacity);//Se obtiene la posicion (a)
 
+    while(map->buckets[posicion] != NULL){
+      posicion ++; //Resolucion colisiones (b)
+      if(map->buckets[posicion] == NULL){
+      }
+    }
 
     return NULL;
 }
