@@ -88,14 +88,15 @@ void * searchMap(HashMap * map,  char * key) {
     long posicion = hash(key, map->capacity);//Se obtiene la posicion (a)
 
     while(map->buckets[posicion]->key != key){
-      posicion++;
+      posicion++; //Avanza si no encuentra la clave(b)
       if(map->buckets[posicion] == NULL){
-        return NULL;
+        return NULL; //LLega a casilla nula, retorna NULL
       }
       if(map->buckets[posicion]->key == key){
         return map->buckets[posicion]->value;
       }
     }
+    map->current = posicion; //Actualiza current
 
     return NULL;
 }
