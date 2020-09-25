@@ -43,23 +43,19 @@ int is_equal(void* key1, void* key2){
     return 0;
 }
 
-
 void insertMap(HashMap * map, char * key, void * value) {
     long posicion = hash(key, map->capacity);//Se obtiene la posicion (a)
-
     while(map->buckets[posicion] != NULL){
       posicion ++; //Resolucion colisiones (b)
       if(posicion == map->capacity){
-      posicion = 0; //Caso de que llegue al final del arreglo
-
+      posicion = 0; //Caso de que llegue al final del arreglo, recorre denuevo el arreglo
       }
     }
   
     // int capacidadmax = (0.7 * map->capacity);
-    // Hacer if para aumentar el tamaño del arreglo
+    // Hacer if para aumentar el tamaño del arreglo(enlarge)
 
     map->buckets[posicion] = createPair(key, value); //Ingresa el par en la casilla (c)
-
     map->current = posicion; //Actualiza el current
     map->size++; //Aumenta size ya que se agrega un elemento
 }
@@ -69,7 +65,6 @@ void enlarge(HashMap * map) {
 
 
 }
-
 
 HashMap * createMap(long capacity) {
     HashMap * map = (HashMap *)malloc(sizeof(HashMap));
@@ -86,7 +81,6 @@ void eraseMap(HashMap * map,  char * key) {
 
 void * searchMap(HashMap * map,  char * key) {   
     long posicion = hash(key, map->capacity);//Se obtiene la posicion (a)
-
     while(is_equal(map->buckets[posicion]->key, key) == 0){
       posicion++; //Avanza si no encuentra la clave(b)
       if(map->buckets[posicion] == NULL){
@@ -97,16 +91,21 @@ void * searchMap(HashMap * map,  char * key) {
       }
     }
 
-    if(is_equal(map->buckets[posicion]->key, key) ==1 ){ //Si encuentra la key
+    if(is_equal(map->buckets[posicion]->key, key) == 1){ //Si encuentra la key
       map->current = posicion; //Actualiza current
       return map->buckets[posicion]->value; //Retorna valor de la clave
     }
-
     return NULL;
 }
 
 void * firstMap(HashMap * map) {
-
+    long posicion = 0;
+    if(map->buckets[posicion]->value == NULL){
+      return NULL;
+    }
+    if(map->buckets[posicion]->value != NULL){
+      return map->buckets[posicion]->value;
+    }
     return NULL;
 }
 
