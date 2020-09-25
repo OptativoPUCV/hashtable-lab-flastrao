@@ -109,7 +109,7 @@ void * firstMap(HashMap * map) {
 
 void * nextMap(HashMap * map) {
   int posSig = map->current+1;
-  if(map->buckets[posSig]->key != NULL){
+  if(map->buckets[posSig] != NULL){
     return map->buckets[posSig]->value;
   }
   return NULL;
