@@ -104,7 +104,7 @@ void * firstMap(HashMap * map) {
       posicion++;
     }
     if(map->buckets[posicion]->value != NULL){
-      return map->buckets[posicion];
+      return map->buckets[posicion]->value;
     }
     return NULL;
 }
