@@ -101,8 +101,8 @@ void * searchMap(HashMap * map,  char * key) {
     }
 
     if(is_equal(map->buckets[posicion]->key, key) ==1 ){
-      return map->buckets[posicion]->value; //Retorna valor de la clave
       map->current = posicion; //Actualiza current si lo encuentra
+      return map->buckets[posicion]->value; //Retorna valor de la clave
     }
 
     return NULL;
