@@ -89,6 +89,7 @@ void * searchMap(HashMap * map,  char * key) {
     while(map->buckets[posicion] != NULL){
       posicion ++; //Resolucion colisiones (b)
       if(map->buckets[posicion] == NULL){
+        return NULL;
       }
     }
 
