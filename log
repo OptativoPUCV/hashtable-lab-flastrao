@@ -220,3 +220,9 @@ Fri Sep 25 23:32:43 UTC 2020:
  1 file changed, 1 insertion(+), 3 deletions(-)
  tests:  0|0
 6c37e7f
+Fri Sep 25 23:33:36 UTC 2020: 
+ hashmap.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+ tests:  9|3
+total_score: 40/70
+c8ea709
