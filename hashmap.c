@@ -100,7 +100,7 @@ void * searchMap(HashMap * map,  char * key) {
 
 void * firstMap(HashMap * map) {
     long posicion = 0;
-    while((map->buckets[posicion]->key == NULL) || (map->buckets[posicion] == NULL)){
+    while((map->buckets[posicion] == NULL) || (map->buckets[posicion]->key == NULL)){
       posicion++;
     }
     map->current = posicion;
