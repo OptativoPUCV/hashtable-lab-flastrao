@@ -108,5 +108,9 @@ void * firstMap(HashMap * map) {
 }
 
 void * nextMap(HashMap * map) {
-    return map->buckets[map->current+1]->value;
+  int posSig = map->current+1;
+  if(map->buckets[posSig]->key != NULL){
+    return map->buckets[posSig]->value;
+  }
+  return NULL;
 }
