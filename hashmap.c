@@ -99,11 +99,13 @@ void * searchMap(HashMap * map,  char * key) {
       posicion = 0; //Caso de que llegue al final del arreglo
       }
     }
+
     if(is_equal(map->buckets[posicion]->key, key) ==1 ){
       return map->buckets[posicion]->value; //Retorna valor de la clave
+      map->current = posicion; //Actualiza current si lo encuentra
     }
 
-    map->current = posicion; //Actualiza current
+    map->current = posicion; //Actualiza current si no lo encuentra
 
     return NULL;
 }
