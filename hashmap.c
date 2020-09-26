@@ -109,9 +109,9 @@ void * firstMap(HashMap * map) {
 
 void * nextMap(HashMap * map) {
   int posSig = map->current+1;
-  while((map->buckets[posSig] == NULL) || (map->buckets[posSig]->key == NULL)){
+  while((map->buckets[posSig]->key == NULL) || (map->buckets[posSig] == NULL)){
     posSig++; //Si es que no existe un value se sigue iterando
   }
-map->current = posSig;
+  map->current = posSig;
   return map->buckets[posSig]->value;
 }
