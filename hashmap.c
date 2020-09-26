@@ -112,7 +112,8 @@ void * nextMap(HashMap * map) {
     while((map->buckets[posSig] == NULL) || (map->buckets[posSig]->key == NULL)){
       posSig++; //Si es que no existe un valor valido se sigue iterando
       if(posSig == map->capacity){
-      posSig = 0; //Caso de que llegue al final del arreglo
+        posSig = 0; //Caso de que llegue al final del arreglo
+        return NULL;
       }
     }
     map->current = posSig;
