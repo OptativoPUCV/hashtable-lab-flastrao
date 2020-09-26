@@ -101,7 +101,7 @@ void * searchMap(HashMap * map,  char * key) {
 void * firstMap(HashMap * map) {
     long posicion = 0; //Se inicializa en 0 para recorrer el arreglo
     while((map->buckets[posicion] == NULL) || (map->buckets[posicion]->key == NULL)){
-      posicion++; //Si es que no existe un value se sigue iterando
+      posicion++; //Si es que no existe un valor valido se sigue iterando
     }
     map->current = posicion; //Actualiza current
     return map->buckets[posicion]->value; //Retorna primer valor que encuentra
@@ -110,7 +110,10 @@ void * firstMap(HashMap * map) {
 void * nextMap(HashMap * map) {
     int posSig = map->current+1;
     while((map->buckets[posSig] == NULL) || (map->buckets[posSig]->key == NULL)){
-      posSig++; //Si es que no existe un value se sigue iterando
+      posSig++; //Si es que no existe un valor valido se sigue iterando
+      if(posSig == map->capacity){
+      posSig = 0; //Caso de que llegue al final del arreglo
+      }
     }
     map->current = posSig;
     return map->buckets[posSig]->value;
