@@ -75,8 +75,9 @@ HashMap * createMap(long capacity) {
 }
 
 void eraseMap(HashMap * map,  char * key) {    
-
-
+    long posicion = hash(key, map->capacity);//Se obtiene la posicion
+    map->buckets[posicion]->key = NULL;
+    map->size--;
 }
 
 void * searchMap(HashMap * map,  char * key) {   
@@ -112,10 +113,10 @@ void * nextMap(HashMap * map) {
     while((map->buckets[posSig] == NULL) || (map->buckets[posSig]->key == NULL)){
       posSig++; //Si es que no existe un valor valido se sigue iterando
       if(posSig == map->capacity){
-        posSig = 0; //Caso de que llegue al final del arreglo
-        return NULL;
+        posSig = 0; //Si llega al final del arreglo se cambia la posicion
+        return NULL; //Retorna NULL ya que no hay nada mas
       }
     }
-    map->current = posSig;
-    return map->buckets[posSig]->value;
+    map->current = posSig; //Actualiza el current
+    return map->buckets[posSig]->value; //Se retorna el siguiente valor
 }
