@@ -67,16 +67,21 @@ void enlarge(HashMap * map) {
 }
 
 HashMap * createMap(long capacity) {
-    HashMap * map = (HashMap *)malloc(sizeof(HashMap));
-    map->buckets = (Pair **) calloc (10,sizeof(Pair *));
+    HashMap * map = (HashMap *)malloc(sizeof(HashMap)); //Se asigna memoria al mapa
+    map->buckets = (Pair **) calloc (10,sizeof(Pair *)); //Se asigna memoria a las casillas
     map->capacity = capacity;
-    map->current = -1;
+    map->current = -1; //Current se actualiza a -1
     return map;
 }
 
 void eraseMap(HashMap * map,  char * key) {    
     long posicion = hash(key, map->capacity);//Se obtiene la posicion
-    map->buckets[posicion]->key = NULL;
+
+    while(is_equal(key,map->buckets[posicion]->key) == 0){
+      posicion++;
+      if(is_equal(key, map->buckets[posicion]->key) ==1)
+        map->buckets[posicion]->key = NULL;
+    }
     map->size--;
 }
 
