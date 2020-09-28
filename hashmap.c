@@ -77,11 +77,11 @@ HashMap * createMap(long capacity) {
 void eraseMap(HashMap * map,  char * key) {    
     long posicion = hash(key, map->capacity);//Se obtiene la posicion
 
-    if(is_equal(key, map->buckets[posicion]) == 0){
-      posicion++;
+    if(is_equal(key, map->buckets[posicion]) == 1){
+      map->buckets[posicion]->key = NULL;
     }
     else{
-      map->buckets[posicion]->key = NULL;
+      posicion++;
     }
     map->size--;
 }
