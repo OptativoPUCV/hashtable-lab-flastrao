@@ -76,16 +76,15 @@ HashMap * createMap(long capacity) {
 
 void eraseMap(HashMap * map,  char * key) {    
     long posicion = hash(key, map->capacity);//Se obtiene la posicion
-
     while(map->buckets[posicion] != NULL){
       if(is_equal(map->buckets[posicion]->key, key) ==  1){
-        map->buckets[posicion]->key = NULL;
-        map->size--;
+        map->buckets[posicion]->key = NULL; //Si la clave coincide se asigna NULL
+        map->size--; //Actualiza size
       }
       if(is_equal(map->buckets[posicion]->key, key) ==  0){
-        posicion++;
+        posicion++; //Si la key no coincide, se sigue iterando
         if(posicion == map->capacity){
-          posicion = 0;
+          posicion = 0; //Si se llega al final del arreglo, entonces se reinicia la posicion del arreglo
         }
       }
     }
