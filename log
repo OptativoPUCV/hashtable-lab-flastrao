@@ -319,3 +319,9 @@ Mon Sep 28 01:12:35 UTC 2020:
  1 file changed, 6 insertions(+)
  tests:  0|0
 d990edf
+Mon Sep 28 01:14:12 UTC 2020: 
+ hashmap.c | 6 ------
+ 1 file changed, 6 deletions(-)
+ tests:  14|2
+total_score: 50/70
+1701c55
